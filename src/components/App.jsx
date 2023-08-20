@@ -43,16 +43,7 @@ export class App extends Component {
   filterPhone = e => {
     this.setState({ filter: e.target.value.toLowerCase() });
   };
-  componentDidMount() {
-    const contactsLocal = localStorage.getItem(KEY);
-    this.setState({ contacts: JSON.parse(contactsLocal) ?? [] });
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem(KEY, JSON.stringify(this.state.contacts));
-    }
-  }
 
   render() {
     const filteredContacts = this.state.contacts.filter(contact =>
